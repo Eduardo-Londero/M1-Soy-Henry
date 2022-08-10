@@ -1,33 +1,23 @@
 'use strict'
 
 function BinarioADecimal(num) {
-  let sum = 0;
-
-  for (let i = 0; i < num.length; i++) {
-     sum += +num[i] * 2 ** (num.length - 1 - i);
+  //num ='1010' split()--> [1,0,1,0] reverse()-->[0,1,0,1]
+  num = num.split('').reverse();// num =['0','1','0','1']
+  //sum 2^Posicion * valor
+  let result = 0;
+  for (let i = 0; i < num.length; i++){
+    result = result +(Math.pow(2, i) * parseInt(num[i]));//2^0 * 0;
   }
-  return sum;
+  return result;
 }
 
 function DecimalABinario(num) {
-  let bina = [];
-    let resul = 0;
-    let coci = 2;
-    let resto = 0;
-
-    while (num > 1) {
-
-        resto = num % coci; // guardamos el resto
-        num = Math.floor(num / coci); // Guardamos el cociente
-        bina.unshift(resto); // vamos armando el numero binario
-        // con los restos que obtenemos
-        // de las divisiones sucesivas
-    }
-
-    bina.unshift(num) // este puede ser un 1 o un 0,
-        // por ello lo agregamos al bina-rio
-    return bina.join('');
-
+  let resultado = '';
+  while (num > 0) {
+    resultado = (num % 2) + resultado;
+    num = Math.floor(num /2);
+  }
+return resultado;
 
 }
 
